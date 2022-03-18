@@ -1,4 +1,36 @@
 <h1>Main App Component!</h1>
+<!-- Derective ngStyle -->
+<hr>
+<p [ngClass]="{blue: backGroundToggel, yellow: !backGroundToggel}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, obcaecati.</p>
+<!-- Derective hrStyle -->
+<hr>
+<button (click)="backGroundToggel = !backGroundToggel;">Change Style</button>
+<div [ngStyle]="{
+    width: '200px',
+    height: '200px',
+    borderRadius: '5px',
+    border: '1px solid #ccc',
+    background: backGroundToggel ? 'yellow' : 'blue'
+}">
+
+</div>
+<!-- 2 Way Binding -->
+<hr>
+<input type="text" [(ngModel)]="title">
+<p><strong>{{ title }}</strong></p>
+<hr>
+<!-- Event Binding -->
+<button (click)="onClick()">Click Me!</button>
+<br>
+<hr>
+<input type="text" (input)="onInput($event)">
+<p><strong>{{inputValue}}</strong></p>
+<br>
+<input type="text" (keyup)="onInput2($event)">
+<p><strong>{{inputValue2}}</strong></p>
+<br>
+<input type="text" (keyup.enter)="onInput3($event)">
+<p><strong>{{inputValue3}}</strong></p>
 <!-- Binding -->
 <hr>
 <img src="{{ img }}" alt="">
