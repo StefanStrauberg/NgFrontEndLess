@@ -7,6 +7,7 @@ import { Post } from './_models/Post';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  now = new Date();
   posts: Post[] = [
     {
       title: 'I want to learn angualr components',
