@@ -19,9 +19,7 @@ fontWeight="bold"
 [dStyles]="{border: '1px solid OliveDrab', borderRadius: '5px'}">
   Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum, saepe?
 </p>
-
 <hr>
-
 <p [appStyle]="'Navy'">
   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, est.
 </p>
@@ -31,5 +29,9 @@ fontWeight="bold"
 <p [appStyle]="'OliveDrab'">
   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, est.
 </p>
-
+<hr>
+<button class="btn" (click)="isVisible = !isVisible">Toggle</button>
+<div *appIfnot="!isVisible" class="wrap">
+  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, in?</p>
+</div>
 </div>
