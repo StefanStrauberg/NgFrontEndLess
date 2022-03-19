@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ContentChild, ElementRef, Input, OnInit } from '@angular/core';
 import { Post } from '../_models/Post';
 
 @Component({
@@ -11,8 +11,12 @@ export class PostComponent implements OnInit {
   // Decorator Input
   @Input() post!: Post;
 
+  // Decorator ContentChild
+  @ContentChild('info', {static: true}) infoRef!: ElementRef;
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.infoRef.nativeElement)
   }
 }
