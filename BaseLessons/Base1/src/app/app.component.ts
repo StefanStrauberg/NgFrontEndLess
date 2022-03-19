@@ -18,6 +18,21 @@ export class AppComponent {
   backGroundToggel: boolean = false;
   toggle: boolean = false;
   toggle2: any = false;
+  array = [1,1,2,3,5,8,13];
+  objects = [
+    {title: 'Post 1', author: 'Author First', comments: 
+    [
+      {name: 'Name Dean' , text: 'lorem 1'},
+      {name: 'Name Jack' , text: 'lorem 2'},
+      {name: 'Name Lisa' , text: 'lorem 3'}
+    ]},
+    {title: 'Post 2', author: 'Author Second', comments: 
+    [
+      {name: 'Name Quake' , text: 'lorem 1'},
+      {name: 'Name Doom' , text: 'lorem 2'},
+      {name: 'Name Strike' , text: 'lorem 3'}
+    ]}
+  ]
   constructor() {
     setTimeout(()=>{
       //console.log('timeout is over');
