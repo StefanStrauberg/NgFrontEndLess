@@ -32,7 +32,8 @@ export class AppComponent {
       {name: 'Name Doom' , text: 'lorem 2'},
       {name: 'Name Strike' , text: 'lorem 3'}
     ]}
-  ]
+  ];
+  now: Date = new Date();
   constructor() {
     setTimeout(()=>{
       //console.log('timeout is over');

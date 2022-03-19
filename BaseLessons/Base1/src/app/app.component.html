@@ -1,12 +1,20 @@
 <h1>Main App Angular!</h1>
+<!-- Pipe -->
+<hr>
+<p>{{ now | date }}</p>
+<p>{{ now | date: 'short' | uppercase }}</p>
+<p>{{ now | date: 'medium' | lowercase }}</p>
+<p>{{ now | date: 'long' }}</p>
+<p>{{ now | date: 'full' }}</p>
 <!-- Derective ngFor -->
 <hr>
 <h2>Derective ngFor</h2>
 <ul>
     <li *ngFor="let number of array; let i = index">
-        index {{i + 1}} - number <strong>{{number}}</strong>
+        {{i + 1}} - number <strong>{{number}}</strong>
     </li>
 </ul>
+<h3>ngFor with Objects</h3>
 <ul style="list-style: none;">
     <li *ngFor="let post of objects">
         <p>{{post.title}} <b>{{post.author}}</b></p>
