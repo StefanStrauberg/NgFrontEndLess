@@ -1,8 +1,17 @@
 <h1>Main App Component!</h1>
-<!-- Derective ngStyle -->
+<!-- Derective ngIf ngElse -->
+<hr>
+<button (click)="toggle = !toggle">Toggle</button>
+<p *ngIf="toggle; else aquaP" class="tan">Lorem ipsum dolor sit amet.</p>
+<ng-template #aquaP>
+    <p class="aqua">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero, officia.</p>
+</ng-template>
+<!-- Derective ngClass -->
+<hr>
+<p [class.yellow]="!backGroundToggel" [class.blue]="backGroundToggel">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit, eius!</p>
 <hr>
 <p [ngClass]="{blue: backGroundToggel, yellow: !backGroundToggel}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, obcaecati.</p>
-<!-- Derective hrStyle -->
+<!-- Derective ngStyle -->
 <hr>
 <button (click)="backGroundToggel = !backGroundToggel;">Change Style</button>
 <div [ngStyle]="{

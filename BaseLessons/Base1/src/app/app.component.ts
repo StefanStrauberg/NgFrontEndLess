@@ -10,12 +10,13 @@ export class AppComponent {
   title = 'Dynamic title';
   number = 40;
   arr = [1, 2, 3];
-  obj = {a: 1, b:{c: 3} };
+  obj = { a: 1, b:{c: 3} };
   img = 'https://icons.iconarchive.com/icons/paomedia/small-n-flat/512/sign-delete-icon.png';
   inputValue = '';
   inputValue2 = '';
   inputValue3 = '';
   backGroundToggel: boolean = false;
+  toggle: boolean = false;
   constructor() {
     setTimeout(()=>{
       //console.log('timeout is over');
