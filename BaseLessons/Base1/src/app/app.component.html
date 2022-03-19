@@ -1,6 +1,17 @@
-<h1>Main App Component!</h1>
-<!-- Derective ngIf ngElse -->
+<h1>Main App Angular!</h1>
+<!-- Derective ngSwitch -->
 <hr>
+<h2>Derective ngSwitch</h2>
+<button (click)="toggle2 = !toggle2">True/False Switch</button>
+<button (click)="toggle2 = 123">Default Switch</button>
+<div [ngSwitch]="toggle2">
+    <p *ngSwitchCase="true" class="steelblue">Lorem ipsum dolor sit amet.</p>
+    <p *ngSwitchCase="false" class="Teal">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus, quam.</p>
+    <p *ngSwitchDefault>Default switch!</p>
+</div>
+<!-- Derective ngIf-Else -->
+<hr>
+<h2>Derective ngIf-Else</h2>
 <button (click)="toggle = !toggle">Toggle</button>
 <p *ngIf="toggle; else aquaP" class="tan">Lorem ipsum dolor sit amet.</p>
 <ng-template #aquaP>
@@ -8,11 +19,12 @@
 </ng-template>
 <!-- Derective ngClass -->
 <hr>
+<h2>Derective ngClass</h2>
 <p [class.yellow]="!backGroundToggel" [class.blue]="backGroundToggel">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit, eius!</p>
-<hr>
 <p [ngClass]="{blue: backGroundToggel, yellow: !backGroundToggel}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, obcaecati.</p>
 <!-- Derective ngStyle -->
 <hr>
+<h2>Derective ngStyle</h2>
 <button (click)="backGroundToggel = !backGroundToggel;">Change Style</button>
 <div [ngStyle]="{
     width: '200px',
@@ -21,32 +33,36 @@
     border: '1px solid #ccc',
     background: backGroundToggel ? 'yellow' : 'blue'
 }">
-
 </div>
 <!-- 2 Way Binding -->
 <hr>
+<h2>2 Way Binding</h2>
 <input type="text" [(ngModel)]="title">
 <p><strong>{{ title }}</strong></p>
-<hr>
 <!-- Event Binding -->
-<button (click)="onClick()">Click Me!</button>
-<br>
 <hr>
+<h2>Event Binding</h2>
+<button (click)="onClick()">Click Me!</button>
+<p>Event</p>
 <input type="text" (input)="onInput($event)">
 <p><strong>{{inputValue}}</strong></p>
-<br>
+<p>Event KeyUp</p>
 <input type="text" (keyup)="onInput2($event)">
 <p><strong>{{inputValue2}}</strong></p>
-<br>
+<p>Event KeyUp.Enter</p>
 <input type="text" (keyup.enter)="onInput3($event)">
 <p><strong>{{inputValue3}}</strong></p>
 <!-- Binding -->
 <hr>
+<h2>Binding</h2>
 <img src="{{ img }}" alt="">
 <!-- Optimize binding -->
-<img [src]="img" alt="">
 <hr>
+<h2>Optimize binding</h2>
+<img [src]="img" alt="">
 <!-- Interpolation -->
+<hr>
+<h2>Interpolation</h2>
 <p>{{ title }}</p>
 <p><strong>{{ number }}</strong></p>
 <p><strong>{{ number - 2 }}</strong></p>
@@ -57,6 +73,7 @@
 <p>{{ 'Hello' + ' World!' }}</p>
 
 <hr>
+<h2>Components</h2>
 
 <app-post></app-post>
 <app-post></app-post>

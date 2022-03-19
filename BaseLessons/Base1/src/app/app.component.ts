@@ -17,6 +17,7 @@ export class AppComponent {
   inputValue3 = '';
   backGroundToggel: boolean = false;
   toggle: boolean = false;
+  toggle2: any = false;
   constructor() {
     setTimeout(()=>{
       //console.log('timeout is over');
