@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Post } from './_models/Post';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Base2';
+  posts: Post[] =[
+    {
+      title: 'I want to learn angualr components',
+      text: 'I learn components',
+      id: 1
+    },
+    {
+      title: 'The Next blog',
+      text: 'The next blog will be about derectives and components',
+      id: 2
+    }
+  ]
 }
