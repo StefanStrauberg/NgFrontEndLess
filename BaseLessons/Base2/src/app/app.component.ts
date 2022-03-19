@@ -7,7 +7,7 @@ import { Post } from './_models/Post';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  posts: Post[] =[
+  posts: Post[] = [
     {
       title: 'I want to learn angualr components',
       text: 'I learn components',
@@ -18,5 +18,10 @@ export class AppComponent {
       text: 'The next blog will be about derectives and components',
       id: 2
     }
-  ]
+  ];
+
+  updatePosts(post: Post){
+    this.posts.unshift(post);
+    //console.log('Post', post)
+  }
 }
