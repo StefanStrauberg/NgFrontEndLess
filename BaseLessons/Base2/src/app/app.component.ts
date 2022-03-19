@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Post } from './_models/Post';
 
 @Component({
@@ -6,7 +6,17 @@ import { Post } from './_models/Post';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  ngOnInit(): void{
+    setTimeout(()=>{
+      console.log('Timeout');
+      this.posts[0] = {
+        title:  'Changed!',
+        text: 'Changed!',
+        id: 5
+      }
+    },5000)
+  }
   now = new Date();
   posts: Post[] = [
     {
@@ -15,8 +25,8 @@ export class AppComponent {
       id: 1
     },
     {
-      title: 'The Next blog',
-      text: 'The next blog will be about derectives and components',
+      title: 'I want to learn angualr components',
+      text: 'I learn components',
       id: 2
     }
   ];
