@@ -2,7 +2,47 @@
 <div class="container">
   <h1>Angular Pipes</h1>
   
-  <p>
-    
-  </p>
-</div>>
+  <h2>Pipes from decimals</h2>
+  <p>Normal - {{ e }}</p>
+  <p>Pipe number - {{ e | number }}</p>
+  <p>Pipe number 1.1-5 - {{ e | number: '1.1-5' }}</p>
+  <p>Pipe number 3.1-2 - {{ e | number: '3.1-2' }}</p>
+  <p>Pipe number 1.0-0 - {{ e | number: '1.0-0' }}</p>
+  <hR>
+  <h2>Pipes from strings</h2>
+  <p>Normal - {{ str }}</p>
+  <p>Pipe string uppercase - {{ str | uppercase }}</p>
+  <p>Pipe string uppercase and after lowercase - {{ str | uppercase | lowercase }}</p>
+  <p>Pipe string uppercase and after lowercase and after titlecase - {{ str | uppercase | titlecase }}</p>
+  <p>Pipe string titlecase - {{ str | titlecase }}</p>
+  <p>Pipe string titlecase after slice 1 - {{ str | titlecase | slice: 1 }}</p>
+  <p>Pipe string titlecase after slice 1 from 5 - {{ str | titlecase | slice: 1:5 }}</p>
+  <p>Pipe string titlecase after slice 1 from -2 - {{ str | titlecase | slice: 1:-2 }}</p>
+  <hr>
+  <h2>Pipes from dates</h2>
+  <p>Normal - {{ date }}</p>
+  <p>Pipe date - {{ date | date }}</p>
+  <p>Pipe date with param. fullDate - {{ date | date: 'fullDate' }}</p>
+  <p>Pipe date with param. longDate - {{ date | date: 'longDate' }}</p>
+  <p>Pipe date with param. MMM yyyy - {{ date | date: 'MMM yyyy' }}</p>
+  <p>Pipe date with param. MMMM yyyy - {{ date | date: 'MMMM yyyy' }}</p>
+  <p>Pipe date with param. dd MMMM yyyy - {{ date | date: 'dd MMMM yyyy' }}</p>
+  <p>Pipe date with param. dd.MM.yyyy - {{ date | date: 'dd.MM.yyyy' }}</p>
+  <hr>
+  <h2>pipes from number</h2>
+  <p>Normal - {{ float }}</p>
+  <p>Pipe currency - {{ float | currency }}</p>
+  <p>Pipe percent - {{ float | percent }}</p>
+  <p>Pipe percent with param 3.1-2 - {{ float | percent: '3.1-2' }}</p>
+  <pre>Normal object - {{ obj }}</pre>
+  <pre>Pipe json fom object - {{ obj | json }}</pre>
+  <hr>
+  <h2>Personal pipe</h2>
+  <p>Normal - {{ 10 | mult }}</p>
+  <p>Personal pipe without param. - {{ 10 | mult }}</p>
+  <p>Personal with param. 2 - {{ 10 | mult: 2 }}</p>
+  <p>Personal with param. 3 - {{ 10 | mult: 3 }}</p>
+  <p>Personal with param. 5 - {{ 10 | mult: 5 }}</p>
+  <p>Personal with param. 8 - {{ 10 | mult: 8 }}</p>
+  <p>Personal with param. 13 - {{ 10 | mult: 13 }}</p>
+</div>
