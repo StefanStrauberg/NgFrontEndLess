@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { AppCounterService } from './Services/app-counter.service';
+// import { AppCounterService } from './Services/app-counter.service';
 
 @NgModule({
   declarations: [
@@ -14,7 +14,7 @@ import { AppCounterService } from './Services/app-counter.service';
     FormsModule
   ],
   providers: [
-    AppCounterService
+    //AppCounterService
   ],
   bootstrap: [AppComponent]
 })
