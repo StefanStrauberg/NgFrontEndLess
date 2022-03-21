@@ -4,14 +4,25 @@
 
     <div class="form-control">
       <label>Email</label>
-      <input type="text" placeholder="Email" formControlName="email">
-      <div class="validation"></div>
+      <!-- <pre>{{ form.get('email')?.errors | json }}</pre> -->
+      <input formControlName="email" type="text" placeholder="Email">
+      <!-- this validation need from user throw error validation -->
+      <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="validation">
+        <small *ngIf="form.get('email')?.errors?.['required']">The email field cannot be empty.</small>
+        <small *ngIf="form.get('email')?.errors?.['email']">Please enter correct email address.</small>
+      </div>
     </div>
 
     <div class="form-control">
       <label>Пароль</label>
-      <input type="password" placeholder="Пароль" formControlName="password">
-      <div class="validation"></div>
+      <!-- <pre>{{ form.get('password')?.errors | json }}</pre> -->
+      <input formControlName="password" type="password" placeholder="Пароль">
+      <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="validation">
+        <small *ngIf="form.get('password')?.errors?.['required']">The password field cannot be empty!</small>
+        <small *ngIf="form.get('password')?.errors?.['minlength'] != null">
+          The password has consists of {{form.get('password')?.errors?.['minlength'].actualLength}} characters, it must be more than {{form.get('password')?.errors?.['minlength'].requiredLength}} characters.
+        </small>
+      </div>
     </div>
 
     <div class="card">
