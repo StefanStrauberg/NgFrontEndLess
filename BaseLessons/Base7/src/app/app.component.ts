@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { delay } from 'rxjs';
+import { delay, subscribeOn } from 'rxjs';
 
 export interface Todo {
   title: string,
@@ -49,5 +49,13 @@ export class AppComponent implements OnInit{
         this.todos = response;
         this.loading = false;
       });
+  }
+
+  removeTodo(id: number | undefined){
+    this.http.delete<void>(`https://jsonplaceholder.typicode.com/todos/${id}`)
+      .subscribe(response => {
+        console.log('DeleteResponse', response);
+        this.todos = this.todos.filter(x => x.id !== id);
+      })
   }
 }
