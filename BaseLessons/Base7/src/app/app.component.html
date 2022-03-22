@@ -3,9 +3,9 @@
 
   <div class="card">
     <div class="form-control">
-      <input type="text" placeholder="Название">
+      <input type="text" placeholder="Название" [(ngModel)]="todoTitle">
     </div>
-    <button class="btn">Добавить</button>
+    <button class="btn" (click)="addTodo()">Добавить</button>
     <button class="btn">Загрузить</button>
   </div>
 
@@ -13,11 +13,14 @@
 
   <div class="card" *ngFor="let item of todos">
     <p>
-      <span [class.completed]="item.complited">{{ item.title }}</span>
+      <span [class.completed]="item.complited">{{ item.title | titlecase }}</span>
       <span>
         <button class="btn btn-danger">Удалить</button>
-        <button class="btn" [disabled]="item.complited">Завершить</button>
+        <button class="btn"[disabled]="item.complited">Завершить</button>
       </span>
     </p>
   </div>
 </div>
+
+
+

@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 export interface Todo {
-  complited: boolean,
   title: string,
+  complited: boolean,
   id?: number
 }
 
@@ -16,12 +16,29 @@ export class AppComponent implements OnInit{
 
   todos: Todo[] = [];
 
+  todoTitle = '';
+
   constructor(private http: HttpClient){}
   ngOnInit(): void {
-    this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/posts?_limit=2')
+    this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=2')
       .subscribe(response => {
         console.log('Response', response);
         this.todos = response;
+      });
+  }
+
+  addTodo(){
+    if(!this.todoTitle.trim()) {
+      return
+    }
+
+    const newTodo:Todo = { title: this.todoTitle, complited: false }
+
+    this.http.post<Todo>('https://jsonplaceholder.typicode.com/todos', newTodo)
+      .subscribe(response => {
+        console.log('Post Response', response);
+        this.todos.push(response);
+        this.todoTitle = '';
       });
   }
 }
