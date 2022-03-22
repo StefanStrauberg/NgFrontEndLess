@@ -1,12 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { delay, subscribeOn } from 'rxjs';
-
-export interface Todo {
-  title: string,
-  complited: boolean,
-  id?: number
-}
+import { delay } from 'rxjs';
+import { Todo, TodosService } from './todos.service';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +15,8 @@ export class AppComponent implements OnInit{
 
   todoTitle = '';
 
-  constructor(private http: HttpClient){}
+  constructor(private todoService: TodosService){}
+
   ngOnInit(): void {
     this.fetchTodos();
   }
@@ -29,30 +24,26 @@ export class AppComponent implements OnInit{
   addTodo(){
     if(!this.todoTitle.trim()) {
       return
-    }
+    };
 
-    const newTodo:Todo = { title: this.todoTitle, complited: false }
-
-    this.http.post<Todo>('https://jsonplaceholder.typicode.com/todos', newTodo)
-      .subscribe(response => {
-        console.log('Post Response', response);
-        this.todos.push(response);
-        this.todoTitle = '';
-      });
+    this.todoService.addTodo({ title: this.todoTitle, completed: false }).subscribe(response => {
+      this.todos.push(response);
+      console.log('PostResponse', response);
+      this.todoTitle = '';
+    });
   }
 
   fetchTodos(){
     this.loading = true;
-    this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=2')
-      .pipe(delay(3000))
-      .subscribe(response => {
-        this.todos = response;
-        this.loading = false;
-      });
+    this.todoService.fetchTodos().subscribe(response => {
+      console.log('GetAllResponse', response);
+      this.todos = response;
+      this.loading = false;
+    })
   }
 
   removeTodo(id: number | undefined){
-    this.http.delete<void>(`https://jsonplaceholder.typicode.com/todos/${id}`)
+    this.todoService.removeTodo(<number>id)
       .subscribe(response => {
         console.log('DeleteResponse', response);
         this.todos = this.todos.filter(x => x.id !== id);
