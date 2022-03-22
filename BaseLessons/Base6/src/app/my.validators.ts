@@ -1,5 +1,5 @@
-import { ɵBrowserPlatformLocation } from "@angular/common";
-import { AbstractControl, FormControl } from "@angular/forms";
+import { AbstractControl } from "@angular/forms";
+import { Observable } from "rxjs";
 
 export class MyValidators{
     static restrictedEmails(control: AbstractControl):{[key:string]: boolean} {
@@ -7,5 +7,17 @@ export class MyValidators{
             return {'restrictedEmail' : true}
         }
         return null!;
+    }
+    //async validation
+    static uniqEmail(control: AbstractControl): Promise<{[key:string]: boolean}> | Observable<{[key:string]: boolean}>{
+        return new Promise(resolve => {
+            setTimeout(() => {
+                if(control.value === 'async@mail.ru') {
+                    resolve({uniqEmail: true})
+                } else {
+                    resolve(null!)
+                }
+            },5000)
+        })
     }
 }
