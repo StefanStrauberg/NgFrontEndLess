@@ -39,7 +39,7 @@ export class AppComponent implements OnInit{
       console.log('GetAllResponse', response);
       this.todos = response;
       this.loading = false;
-    })
+    });
   }
 
   removeTodo(id: number | undefined){
@@ -47,6 +47,14 @@ export class AppComponent implements OnInit{
       .subscribe(response => {
         console.log('DeleteResponse', response);
         this.todos = this.todos.filter(x => x.id !== id);
-      })
+      });
+  }
+
+  completeTodo(id: number | undefined){
+    this.todoService.completeTodo(<number>id)
+      .subscribe(response => {
+        (this.todos.find(x => x.id === response.id) as Todo).completed = true;
+        console.log('PutResponse', response);
+      });
   }
 }

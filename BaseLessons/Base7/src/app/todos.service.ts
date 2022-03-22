@@ -12,16 +12,20 @@ export interface Todo{
 export class TodosService{
     constructor(private http: HttpClient){}
 
+    fetchTodos(): Observable<Todo[]>{
+        return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=2')
+        .pipe(delay(1000));
+    }
+    
     addTodo(todo: Todo): Observable<Todo>{
         return this.http.post<Todo>('https://jsonplaceholder.typicode.com/todos', todo);
-      }
-    
-    fetchTodos(): Observable<Todo[]>{
-       return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=2')
-        .pipe(delay(1000));
-      }
+    }
 
     removeTodo(id: number): Observable<void>{
         return this.http.delete<void>(`https://jsonplaceholder.typicode.com/todos/${id}`);
+    }
+
+    completeTodo(id: number): Observable<Todo>{
+        return this.http.put<Todo>(`https://jsonplaceholder.typicode.com/todos/${id}`,{ completed: true});
     }
 }
