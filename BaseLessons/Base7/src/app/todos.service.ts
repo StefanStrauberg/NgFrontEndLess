@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, delay, Observable, throwError } from "rxjs";
 
@@ -13,7 +13,13 @@ export class TodosService{
     constructor(private http: HttpClient){}
 
     fetchTodos(): Observable<Todo[]>{
-        return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=2')
+        let params = new HttpParams();
+        params = params.append('_limit','4');
+        params = params.append('custom', 'anything');
+        return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos', {
+            // params: new HttpParams().set('_limit','3')
+            params
+        })
         .pipe(delay(1000),
         catchError(error => {
             console.log('Error: ',error.message);
