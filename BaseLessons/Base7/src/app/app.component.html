@@ -11,6 +11,11 @@
 
   <hr>
 
+  <p class="error" *ngIf="error; else todosBlock">
+    {{ error }}
+  </p>
+
+  <ng-template #todosBlock>
   <div *ngIf="!loading; else loadingBlock">
     <div *ngIf="todos.length; else noTodos">  
       <div class="card" *ngFor="let item of todos">
@@ -29,6 +34,8 @@
   
   <ng-template #noTodos><p>No Items!</p></ng-template>
 
+  </ng-template>
+  
 </div>
 
 
